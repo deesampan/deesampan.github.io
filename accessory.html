@@ -28,6 +28,7 @@
     </table>
     
     <h2>Total Price: <span id="total-price">$0</span></h2>
+    <h2>Total VAT: <span id="only-vat">$0</span></h2>
     <h2>Total Price with VAT: <span id="total-vat">$0</span></h2>
     
  
@@ -42,7 +43,8 @@
             var accessoryTable = document.getElementById("accessory-table");
             var price = parseFloat(selectedAccessoryValue)
             var totalPrice = document.getElementById("total-price");
-            var totalVat = document.getElementById("total-vat")
+            var totalVat = document.getElementById("total-vat");
+            var onlyVat = document.getElementById("only-vat");
             var productTable = document.getElementById("product-list");
             
             var row = productTable.insertRow(-1);
@@ -55,6 +57,7 @@
             priceCell.innerHTML = "$" + (price * amount);
             
             totalPrice.innerHTML = "$" + (parseFloat(totalPrice.innerHTML.substring(1)) + (price * amount));
+            onlyVat.innerHTML = "$" + (parseFloat(onlyVat.innerHTML.substring(1)) + (amount * 1.07));
             totalVat.innerHTML = "$" + (parseFloat(totalVat.innerHTML.substring(1)) + (price * amount)*1.07);
         }
         
