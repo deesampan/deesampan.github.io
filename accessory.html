@@ -3,6 +3,7 @@
 <head>
     <title>Car Accessories</title>
     <link rel="stylesheet" href="css/global.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <h1>Car Accessories</h1>
@@ -35,30 +36,44 @@
     
     <script>
         function addItem() {
-            var accessorySelect = document.getElementById("accessory-select");
-            var selectedAccessory = accessorySelect.options[accessorySelect.selectedIndex].text;
-            var selectedAccessoryValue = accessorySelect.options[accessorySelect.selectedIndex].value;
-            var amountInput = document.getElementById("amount-input");
-            var amount = amountInput.value;
-            var accessoryTable = document.getElementById("accessory-table");
-            var price = parseFloat(selectedAccessoryValue)
-            var totalPrice = document.getElementById("total-price");
-            var totalVat = document.getElementById("total-vat");
-            var onlyVat = document.getElementById("only-vat");
-            var productTable = document.getElementById("product-list");
             
-            var row = productTable.insertRow(-1);
-            var accessoryCell = row.insertCell(0);
-            var amountCell = row.insertCell(1);
-            var priceCell = row.insertCell(2);
             
-            accessoryCell.innerHTML = selectedAccessory;
-            amountCell.innerHTML = amount;
-            priceCell.innerHTML = "$" + (price * amount);
+
+
+            //get data info
+            var accessoryOption = $("#accessory-select option:selected");
+            var name_of_option = accessoryOption.text();
+            var price_of_option = accessoryOption.val();
+            var amount_input = $("#amount-input").val();
+
+
+            //create new row part
+            var product_list_table = $("#product-list")
+            var name_row = "<td>"+name_of_option+"</td>"
+            var amount_row = "<td>"+amount_input+"</td>"
+            var price_row = "<td>"+(amount_input * price_of_option)+"</td>"
+            var the_row = "<tr>"+name_row+amount_row+price_row+"</tr>"
+
+            //adding row
+            product_list_table.append(the_row);
+
+
+
+            //calculate the total part
+            var total_price = amount_input * price_of_option;
+            console.log(total_price);
+
+
+
+            //get html header
+            var total_price_text = $("#total-price");
+            var total_vat_text = $("#only-vat");
+            var total_price_with_vattext = $("#total-vat");
+
+            total_price_text.html("$" + (parseFloat(total_price_text.text().substring(1))+(total_price)).toFixed(2));
+            total_vat_text.html("$" + (parseFloat(total_vat_text.text().substring(1))+(amount_input * 1.07)).toFixed(2));
+            total_price_with_vattext.html("$" + (parseFloat(total_price_with_vattext.text().substring(1))+(total_price)*1.07).toFixed(2))
             
-            totalPrice.innerHTML = "$" + (parseFloat(totalPrice.innerHTML.substring(1)) + (price * amount));
-            onlyVat.innerHTML = "$" + (parseFloat(onlyVat.innerHTML.substring(1)) + (amount * 1.07));
-            totalVat.innerHTML = "$" + (parseFloat(totalVat.innerHTML.substring(1)) + (price * amount)*1.07);
         }
         
  
