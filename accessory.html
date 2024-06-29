@@ -71,7 +71,7 @@
             var total_price_with_vattext = $("#total-vat");
 
             total_price_text.html("$" + (parseFloat(total_price_text.text().substring(1))+(total_price)).toFixed(2));
-            total_vat_text.html("$" + (parseFloat(total_vat_text.text().substring(1))+(amount_input * 1.07)).toFixed(2));
+            total_vat_text.html("$" + (parseFloat(total_vat_text.text().substring(1))+(total_price * 0.07)).toFixed(2));
             total_price_with_vattext.html("$" + (parseFloat(total_price_with_vattext.text().substring(1))+(total_price)*1.07).toFixed(2))
             
         }
