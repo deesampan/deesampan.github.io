@@ -58,7 +58,12 @@
  
     
     <script>
+        var item_id = 0;
 
+        //get html header
+        var total_price_text = $("#total-price");
+        var total_vat_text = $("#only-vat");
+        var total_price_with_vattext = $("#total-vat");
         
 
         function addItem() {
@@ -74,8 +79,15 @@
             var name_row = "<td>"+name_of_option+"</td>"
             var amount_row = "<td>"+amount_input+"</td>"
             var price_row = "<td>"+(amount_input * price_of_option)+"</td>"
-            var remove_button = "<td><button onclick='removeItem()'type='button' class='btn btn-outline-danger'>x</button></td>"
-            var the_row = "<tr>"+name_row+amount_row+price_row+remove_button+"</tr>"
+            var remove_button = "<td><button id='rev_"+item_id+"' type='button' class='btn btn-outline-danger'>x</button></td>"
+
+            //$("#rev_"+item_id).click(function(){
+            //    removeItem(price_of_option,amount_input,"item_"+item_id);
+            //});
+
+            $("#rev_0").text("kuy");
+
+            var the_row = "<tr id='item_"+item_id+"'>"+name_row+amount_row+price_row+remove_button+"</tr>"
 
             //adding row
             product_list_table.append(the_row);
@@ -87,19 +99,23 @@
             console.log(total_price);
 
 
-
-            //get html header
-            var total_price_text = $("#total-price");
-            var total_vat_text = $("#only-vat");
-            var total_price_with_vattext = $("#total-vat");
-
             total_price_text.html("$" + (parseFloat(total_price_text.text().substring(1))+(total_price)).toFixed(2));
             total_vat_text.html("$" + (parseFloat(total_vat_text.text().substring(1))+(total_price * 0.07)).toFixed(2));
             total_price_with_vattext.html("$" + (parseFloat(total_price_with_vattext.text().substring(1))+(total_price)*1.07).toFixed(2))
+
+            item_id += 1;
         }
 
-        function removeItem(){
-            console.log("you do removing");
+        function removeItem(price, amout,item_id){
+            var total_price = price * amout;
+
+            console.log(item_id);
+
+            total_price_text.html("$" + (parseFloat(total_price_text.text().substring(1))-(total_price)).toFixed(2));
+            total_vat_text.html("$" + (parseFloat(total_vat_text.text().substring(1))-(total_price * 0.07)).toFixed(2));
+            total_price_with_vattext.html("$" + (parseFloat(total_price_with_vattext.text().substring(1))-(total_price)*1.07).toFixed(2))
+
+            $(item_id).html("");
         }
         
  
