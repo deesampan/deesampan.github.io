@@ -79,14 +79,7 @@
             var name_row = "<td>"+name_of_option+"</td>"
             var amount_row = "<td>"+amount_input+"</td>"
             var price_row = "<td>"+(amount_input * price_of_option)+"</td>"
-            var remove_button = "<td><button id='rev_"+item_id+"' type='button' class='btn btn-outline-danger'>x</button></td>"
-
-            //$("#rev_"+item_id).click(function(){
-            //    removeItem(price_of_option,amount_input,"item_"+item_id);
-            //});
-
-            $("#rev_0").text("kuy");
-
+            var remove_button = `<td><button id="item_${item_id}" onclick="removeItem(${price_of_option},${amount_input},'item_${item_id}')" type='button' class='btn btn-outline-danger'>x</button></td>`
             var the_row = "<tr id='item_"+item_id+"'>"+name_row+amount_row+price_row+remove_button+"</tr>"
 
             //adding row
@@ -96,7 +89,6 @@
 
             //calculate the total part
             var total_price = amount_input * price_of_option;
-            console.log(total_price);
 
 
             total_price_text.html("$" + (parseFloat(total_price_text.text().substring(1))+(total_price)).toFixed(2));
@@ -109,16 +101,13 @@
         function removeItem(price, amout,item_id){
             var total_price = price * amout;
 
-            console.log(item_id);
-
             total_price_text.html("$" + (parseFloat(total_price_text.text().substring(1))-(total_price)).toFixed(2));
             total_vat_text.html("$" + (parseFloat(total_vat_text.text().substring(1))-(total_price * 0.07)).toFixed(2));
             total_price_with_vattext.html("$" + (parseFloat(total_price_with_vattext.text().substring(1))-(total_price)*1.07).toFixed(2))
 
-            $(item_id).html("");
+            $("#"+item_id).remove();
         }
-        
- 
+
     </script>
 </body>
 </html>
