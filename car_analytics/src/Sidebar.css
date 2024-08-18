@@ -1,0 +1,41 @@
+.sidebar {
+    position: fixed;
+    left: 0; /* Align to the very left of the viewport */
+    top: 0;
+    width: 200px; /* Adjust width as needed */
+    height: 100%;
+    background-color: #f8f9fa; /* Bootstrap light background color */
+    padding: 15px;
+    border-right: 1px solid #ddd;
+    z-index: 1000; /* Ensure it stays above other content */
+  }
+  
+  .sidebar h2 {
+    font-size: 1.5rem;
+    color: black;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar ul li {
+    margin: 10px 0;
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: #007bff; /* Bootstrap primary color */
+  }
+  
+  .sidebar ul li a:hover {
+    text-decoration: underline;
+  }
+  .bottom-text{
+    position: absolute;
+    bottom: 20px; /* Adjust to your liking */
+    left: 0;
+    right: 0;
+    text-align: center;
+  }

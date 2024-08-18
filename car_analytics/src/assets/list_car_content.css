@@ -1,0 +1,19 @@
+.main_board{
+    background-color: rgb(240, 240, 240);
+    width: 80%;
+    height: 700px;
+
+    margin: 0 auto;
+
+    border-radius: 25px;
+}
+.content{
+    background-color: rgb(214, 84, 40);
+    width: 250px;
+    height: 250px;
+}
+.content_green{
+    background-color: rgb(17, 173, 124);
+    width: 250px;
+    height: 250px;
+}
