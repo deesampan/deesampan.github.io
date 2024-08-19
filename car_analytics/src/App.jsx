@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Dashboard from './Dashboard';
 import Highlighted from './Highlighted';
@@ -21,7 +21,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/highlighted" element={<Highlighted />} />
-                <Route path="*" element={<Dashboard />} />
+                <Route path="*" element={<Navigate to="/" />} /> 
               </Routes>
             </div>
           </Col>
