@@ -19,8 +19,6 @@ function Pie_Chart(){
 
     const brandTotals = calculateBrandTotals(car_data);
 
-    console.log(brandTotals)
-
     const data = {
         labels: brandTotals.map((data)=>data.brand),
         datasets:[

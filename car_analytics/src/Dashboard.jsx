@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from "react";
 
 //makeing grid
 import Container from 'react-bootstrap/Container';
@@ -15,6 +15,8 @@ import HoverBox from "./Hover_Box";
 //list car content
 import List_car_content from "./List_car_content"
 
+import Brand_of_model from './brand_of_model';
+
 import "./App.css"
 
 
@@ -23,6 +25,13 @@ import "./App.css"
 
 const Dashboard = () => {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
+
+    const [selectedCar, setSelectedCar] = useState(null)
+
+    const receiveSelectedCar = (e) =>{
+        console.log("this is from dashboard, selected car is : " , e)
+        setSelectedCar(e)
+    }
     
     return (
         <Container>
@@ -50,21 +59,32 @@ const Dashboard = () => {
             </Row>
             <Row className="justify-content-md-center">
                 <Col xs={12}>
-                    <h1 className='styled-header'>List Or Car</h1>
+                    <h1 className='styled-header'>List Or Car's Brand</h1>
                     <i class="bi bi-list-nested"></i>
                 </Col>
             </Row>
             <Row className="justify-content-md-center">
                 {/* content of list of car */}
                 <Col xs={12}>
-                    <List_car_content/>
+                    <List_car_content action={receiveSelectedCar}/>
+                </Col>
+            </Row>
+            <Row className="justify-content-md-center">
+                <Col xs={12}>
+                    <h1 className='styled-header'>Model Of Brand</h1>
+                    <i class="bi bi-list-nested"></i>
+                </Col>
+            </Row>
+            <Row className="justify-content-md-center">
+                {/* content of list of car */}
+                <Col xs={12}>
+                    <Brand_of_model selected={selectedCar}/>
                 </Col>
             </Row>
 
 
         </Container>
     );
-    
 };
 
 export default Dashboard;
