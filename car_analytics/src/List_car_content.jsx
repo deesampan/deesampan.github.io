@@ -5,7 +5,6 @@ import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 import Table from 'react-bootstrap/Table';
 import { Container,Row,Col } from "react-bootstrap";
-import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
 import car_data from "../taladrod-cars.json"
@@ -45,10 +44,6 @@ function list_car_content(props){
 
         props.action(e)
     }
-
-    // if(selectedCar != ""){
-    //     console.log("some car selected");
-    // }
 
     const child_of_car_data = car_data.Cars.filter((car) => 
         car.MkID === Number(selectedCar)

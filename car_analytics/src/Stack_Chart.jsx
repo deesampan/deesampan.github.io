@@ -1,64 +1,72 @@
-import React from "react";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Bar } from "react-chartjs-2";
+import React from 'react';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
-//data
-import car_data from "../taladrod-cars.json"
-
-function Bar_Chart(){
-
-    function calculateBrandTotals(data) {
-        const brandTotals = data.MMList.map(brand => {
-            const total = data.Cars.filter(car => car.MkID === brand.mkID).length;
-            return { brand: brand.Name, total: total };
-        });
-
-        return brandTotals;
-    }
-
-    const brandTotals = calculateBrandTotals(car_data);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 
-    const data = {
-        labels: brandTotals.map((data)=>data.brand),
-        datasets: [
-          {
-            label: 'Dataset 1',
-            data: brandTotals.map((data)=>data.total),
-          },
-          {
-            label: 'Dataset 2',
-            data: brandTotals.map((data)=>data.total),
-          },
-          {
-            label: 'Dataset 3',
-            data: brandTotals.map((data)=>data.total),
-          },
-        ]
-      };
-    const option = {
-        plugins: {
-          title: {
-            display: true,
-            text: 'Model of Brand'
-          },
-        },
-        responsive: true,
-        scales: {
-          x: {
-            stacked: true,
-          },
-          y: {
-            stacked: true
-          }
-        }
-      }
-    return(
-        <>
-            <Bar data={data} options={option}/>
-        </>
-    )
-   
-}
+import carData from "../taladrod-cars.json"
 
-export default Bar_Chart;
+const brandLookup = {};
+carData.MMList.forEach(brand => {
+  brandLookup[brand.mkID] = brand.Name;
+});
+
+const brands = {};
+carData.Cars.forEach(car => {
+  const brandName = brandLookup[car.MkID];
+  
+  if (!brands[brandName]) {
+    brands[brandName] = {
+      label: brandName,
+      models: {}
+    };
+  }
+
+  if (!brands[brandName].models[car.Model]) {
+    brands[brandName].models[car.Model] = 0;
+  }
+
+  brands[brandName].models[car.Model] += 1;
+});
+
+const chartData = {
+  labels: Object.keys(brands).map(key => brands[key].label),
+  datasets: Object.keys(brands).map(key => ({
+    label: brands[key].label,
+    data: Object.values(brands[key].models),
+    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+    borderColor: 'rgba(75, 192, 192, 1)',
+    borderWidth: 1
+  }))
+};
+
+
+
+
+const StackedBarChart = ({  }) => {
+  const options = {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Car Models by Brand',
+      },
+      legend: {
+        display: false, // This removes the legend
+      },
+    },
+    responsive: true,
+    scales: {
+      x: {
+        stacked: true,
+      },
+      y: {
+        stacked: true,
+      },
+    },
+  };
+
+  return <Bar data={chartData} options={options} />;
+};
+
+export default StackedBarChart;

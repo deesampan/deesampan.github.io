@@ -1,15 +1,22 @@
-.main_board_card{
+.main_board_card {
+    position: relative; /* Make the card a positioned container */
     height: 250px;
     width: 30%;
-    background-color:rgb(224, 224, 224);
+    background-color: rgb(239, 240, 255);
     margin: 10px;
     border-radius: 20px;
     display: inline-block;
 }
 
+.pinning-button {
+    position: absolute; /* Position the button relative to the card */
+    top: 10px; /* Adjust top position */
+    left: 10px; /* Adjust right position */
+}
+
 .card_right{
     margin-top: 30px;
-    height: 150px;
+    height: 125px;
     width: 90%;
     /* background-color: rgba(255, 255, 255, 0.253); */
     margin-left: 20px;
@@ -19,19 +26,24 @@
     text-align: center;
     word-wrap: break-word;
 }
-.card_down{
+.card_down {
     margin-top: 30px;
-    height: 150px;
+    height: 40px;
     width: 90%;
-    /* background-color: rgba(255, 255, 255, 0.253); */
+    background-color: rgba(16, 132, 41, 0.373);
     margin-left: 20px;
     font-family: 'Arial', sans-serif;
     font-size: 20px;
-    color: #0d8d2b;
+    color: #ffffff;
     text-align: center;
     word-wrap: break-word;
-    font-weight: normal
+    font-weight: normal;
+    display: flex; /* Add this */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    border-radius: 10px;
 }
+
 
 img{
     margin-top: 25px;

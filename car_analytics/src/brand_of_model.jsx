@@ -13,7 +13,7 @@ function BrandOfModel(props) {
             {
                 filterData.map((data)=>{
                     return(
-                        <Car_Card dataset={data}/>
+                        <Car_Card dataset={data} state={0}/>
                     )
                 })
             }

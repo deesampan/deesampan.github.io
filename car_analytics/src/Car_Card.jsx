@@ -1,25 +1,51 @@
 import React from "react";
 import "./Car_Card.css"
 import { Container,Row,Col } from "react-bootstrap";
+import {Button} from "react-bootstrap";
 
 function Car_Card(props){
     const data = props.dataset;
-    const model_name = data.Model;
     const model_price = data.Prc;
     const model_img = data.Img300;
-    return(
+    const model_cid = data.Cid;
+    const model_real = data.NameMMT
+
+
+    const state = props.state
+
+
+    let pinning = ""
+
+    const clickStateOne=()=>{
+        props.action(model_cid)
+    }
+    
+    const clickStateTwo=()=>{
+        props.action(data)
+    }
+
+    if (state==1){
+        pinning = <Button variant="outline-danger" onClick={clickStateOne}>📌</Button>
+    }else if(state == 2){
+        pinning = <Button variant="outline-danger" onClick={clickStateTwo}>Remove❌</Button>
+    }
+
+    return (
         <>
             <div className="main_board_card">
+                <div className="pinning-button">
+                    {pinning}
+                </div>
                 <Container>
                     <Row>
                         <Col xs={6}>
-                            <img src={model_img} width="120%" height="200px"/>
+                            <img src={model_img} width="120%" height="200px" />
                         </Col>
                         <Col xs={6}>
                             <Row>
                                 <Col>
                                     <div className="card_right">
-                                        {model_name}
+                                        {model_real}
                                     </div>
                                 </Col>
                             </Row>
@@ -35,7 +61,7 @@ function Car_Card(props){
                 </Container>
             </div>
         </>
-    )
+    );
 }
 
 export default Car_Card;
