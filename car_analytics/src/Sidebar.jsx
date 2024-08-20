@@ -11,7 +11,7 @@ const Sidebar = () => {
       <hr/>
       <ul>
         <li><Link to="/"><Button variant="outline-success">Dashboard🏡</Button></Link></li>
-        <li><Link to="highlighted"><Button variant="outline-success">Highlighted⭐</Button></Link></li>
+        <li><Link to="/highlighted"><Button variant="outline-success">Highlighted⭐</Button></Link></li>
       </ul>
 
       <h6 className='bottom-text'>Made by Deesampan😎</h6>
