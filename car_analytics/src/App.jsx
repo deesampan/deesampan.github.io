@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 function App() {
   return (
     <>
-      {/* <Router basename="/car_analytics">
+      <Router basename="/car_analytics">
         <Container fluid>
           <Row>
             <Col>
@@ -28,7 +28,7 @@ function App() {
             </Col>
           </Row>
         </Container>
-      </Router> */}
+      </Router>
     </>
   );
 }
