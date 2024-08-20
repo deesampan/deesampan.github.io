@@ -10,24 +10,26 @@ import Col from 'react-bootstrap/Col';
 
 function App() {
   return (
-    <Router basename="/car_analytics">
-      <Container fluid>
-        <Row>
-          <Col>
-            <Sidebar />
-          </Col>
-          <Col>
-            <div style={{ position: 'absolute', top: '0', left: '200px', right: '0', padding: '20px', backgroundColor: 'white' }}>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="highlighted" element={<Highlighted />} />
-                <Route path="*" element={<Navigate to="/" />} />
-              </Routes>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </Router>
+    <>
+      <Router basename="/car_analytics">
+        <Container fluid>
+          <Row>
+            <Col>
+              <Sidebar />
+            </Col>
+            <Col>
+              <div style={{ position: 'absolute', top: '0', left: '200px', right: '0', padding: '20px', backgroundColor: 'white' }}>
+                <Routes>
+                  <Route path="/" element={<Dashboard />} />
+                  <Route path="highlighted" element={<Highlighted />} />
+                  <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </Router>
+    </>
   );
 }
 
