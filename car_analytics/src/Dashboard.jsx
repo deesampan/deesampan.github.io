@@ -19,6 +19,8 @@ import Brand_of_model from './brand_of_model';
 
 import "./App.css"
 
+import Sidebar from "./Sidebar";
+
 
 
 
@@ -34,56 +36,67 @@ const Dashboard = () => {
     }
     
     return (
-        <Container>
-            <Row className="justify-content-md-center">
-                <Col md="auto">
-                    <h2 className="intro">Dashboard</h2>
-                </Col>
-            </Row>
+        <>
+        <Container fluid>
             <Row>
-                <Col xs={6}>
-                    <Pie_Chart />
+                <Col>
+                    <Sidebar />
                 </Col>
-                <Col xs={6}>
-                    <HoverBox context={"Portion of Cars by brand 🏎"} isred={true}/>
+                <Col>
+                    <div style={{ position: 'absolute', top: '0', left: '200px', right: '0', padding: '20px', backgroundColor: 'white'}}>
+                        <div style={{width:"80%", margin:"0 auto"}}>
+                            <Row className="justify-content-md-center">
+                                <Col md="auto">
+                                    <h2 className="intro">Dashboard</h2>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col xs={6}>
+                                    <Pie_Chart />
+                                </Col>
+                                <Col xs={6}>
+                                    <HoverBox context={"Portion of Cars by brand 🏎"} isred={true}/>
+                                </Col>
+                            </Row>
+                            <hr />
+                            <Row>
+                                <Col xs={6}>
+                                    <HoverBox context={"Model Of Brand💸"} isred={false}/>
+                                </Col>
+                                <Col xs={6}>
+                                    <Stack_Chart />
+                                </Col>
+                            </Row>
+                            <Row className="justify-content-md-center">
+                                <Col xs={12}>
+                                    <h1 className='styled-header'>List Or Car's Brand</h1>
+                                    <i class="bi bi-list-nested"></i>
+                                </Col>
+                            </Row>
+                            <Row className="justify-content-md-center">
+                                {/* content of list of car */}
+                                <Col xs={12}>
+                                    <List_car_content action={receiveSelectedCar}/>
+                                </Col>
+                            </Row>
+                            <Row className="justify-content-md-center">
+                                <Col xs={12}>
+                                    <h1 className='styled-header'>Model Of Brand</h1>
+                                    <i class="bi bi-list-nested"></i>
+                                </Col>
+                            </Row>
+                            <Row className="justify-content-md-center">
+                                {/* content of list of car */}
+                                <Col xs={12}>
+                                    <Brand_of_model selected={selectedCar}/>
+                                </Col>
+                            </Row>
+                        </div>
+                    </div>
                 </Col>
             </Row>
-            <hr />
-            <Row>
-                <Col xs={6}>
-                    <HoverBox context={"Model Of Brand💸"} isred={false}/>
-                </Col>
-                <Col xs={6}>
-                    <Stack_Chart />
-                </Col>
-            </Row>
-            <Row className="justify-content-md-center">
-                <Col xs={12}>
-                    <h1 className='styled-header'>List Or Car's Brand</h1>
-                    <i class="bi bi-list-nested"></i>
-                </Col>
-            </Row>
-            <Row className="justify-content-md-center">
-                {/* content of list of car */}
-                <Col xs={12}>
-                    <List_car_content action={receiveSelectedCar}/>
-                </Col>
-            </Row>
-            <Row className="justify-content-md-center">
-                <Col xs={12}>
-                    <h1 className='styled-header'>Model Of Brand</h1>
-                    <i class="bi bi-list-nested"></i>
-                </Col>
-            </Row>
-            <Row className="justify-content-md-center">
-                {/* content of list of car */}
-                <Col xs={12}>
-                    <Brand_of_model selected={selectedCar}/>
-                </Col>
-            </Row>
-
-
         </Container>
+        </>
     );
 };
 

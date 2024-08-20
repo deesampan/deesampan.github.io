@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')).render(
     <HashRouter>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="highlighted" element={<Highlighted />} />
+        <Route path="/highlighted" element={<Highlighted />} />
       </Routes>
     </HashRouter>
   </StrictMode>,

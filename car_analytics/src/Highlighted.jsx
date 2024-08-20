@@ -11,6 +11,8 @@ import Show_highlight from './show_highlight';
 
 import car_data from "../taladrod-cars.json";
 
+import Sidebar from './Sidebar';
+
 const Highlighted = () => {
   // Initialize state for total_car_with_pin
   const [totalCarWithPin, setTotalCarWithPin] = useState(() => {
@@ -50,29 +52,40 @@ const Highlighted = () => {
 
   return (
     <Container>
-      <Row className="justify-content-md-center">
-        <Col md="auto">
-          <h2 className='intro'>My Highlighted List</h2>
+      <Row>
+        <Col>
+          <Sidebar />
         </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col xs={12}>
-          <h1 className='styled-header'>My Highlighted📌</h1>
-          <i className="bi bi-stars"></i>
+        <Col>
+          <div style={{ position: 'absolute', top: '0', left: '200px', right: '0', padding: '20px', backgroundColor: 'white' }}>
+            <div style={{width:"80%", margin:"0 auto"}}>
+                <Row className="justify-content-md-center">
+                <Col md="auto">
+                  <h2 className='intro'>My Highlighted List</h2>
+                </Col>
+              </Row>
+              <Row className="justify-content-md-center">
+                <Col xs={12}>
+                  <h1 className='styled-header'>My Highlighted📌</h1>
+                  <i className="bi bi-stars"></i>
+                </Col>
+              </Row>
+              <Row className="justify-content-md-center">
+                <Show_highlight dataset={highlightedCar} action={retrieve_car}/>
+              </Row>
+              <hr />
+              <Row className="justify-content-md-center">
+                <Col xs={12}>
+                  <h1 className='styled-header'>List Of All Cars</h1>
+                  <i className="bi bi-list-nested"></i>
+                </Col>
+              </Row>
+              <Row className="justify-content-md-center">
+                <Show_all_car_for_pin dataset={totalCarWithPin} action={make_car_pin} />
+              </Row>
+            </div>
+          </div>
         </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Show_highlight dataset={highlightedCar} action={retrieve_car}/>
-      </Row>
-      <hr />
-      <Row className="justify-content-md-center">
-        <Col xs={12}>
-          <h1 className='styled-header'>List Of All Cars</h1>
-          <i className="bi bi-list-nested"></i>
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Show_all_car_for_pin dataset={totalCarWithPin} action={make_car_pin} />
       </Row>
     </Container>
   );
