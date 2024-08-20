@@ -20,7 +20,7 @@ function App() {
             <div style={{ position: 'absolute', top: '0', left: '200px', right: '0', padding: '20px', backgroundColor: 'white' }}>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/highlighted" element={<Highlighted />} />
+                <Route path="highlighted" element={<Highlighted />} />
                 <Route path="*" element={<Navigate to="/" />} />
               </Routes>
             </div>
