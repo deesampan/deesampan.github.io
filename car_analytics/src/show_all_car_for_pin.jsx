@@ -26,7 +26,7 @@ function Show(props){
 
     return(
         <>  
-            <Container>
+            <Container fluid>
                 <Row>
                     <Col xs={6}>
                        
@@ -40,14 +40,17 @@ function Show(props){
                     </Col>
                 </Row>
             </Container>
-            {
-                filterSearchData.map((data)=>{
-                    return(
-                        <Car_Card dataset={data} state={1} action={clickStateOne}/>
-                    )
-                })
-            }
-            
+            <Container fluid="md">
+                <Row>
+                {
+                    filterSearchData.map((data)=>{
+                        return(
+                            <Car_Card dataset={data} state={1} action={clickStateOne}/>
+                        )
+                    })
+                }
+                </Row>
+            </Container>
         </>
     )
 }

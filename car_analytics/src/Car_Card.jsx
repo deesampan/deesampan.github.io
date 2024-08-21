@@ -32,34 +32,36 @@ function Car_Card(props){
 
     return (
         <>
-            <div className="main_board_card">
-                <div className="pinning-button">
-                    {pinning}
+            <Col xs>
+                <div className="main_board_card">
+                    <div className="pinning-button">
+                        {pinning}
+                    </div>
+                    <Container>
+                        <Row>
+                            <Col xs={6}>
+                                <img src={model_img} width="120%" height="200px" />
+                            </Col>
+                            <Col xs={6}>
+                                <Row>
+                                    <Col>
+                                        <div className="card_right">
+                                            {model_real}
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
+                                        <div className="card_down">
+                                            {model_price} Baht
+                                        </div>
+                                    </Col>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Container>
                 </div>
-                <Container>
-                    <Row>
-                        <Col xs={6}>
-                            <img src={model_img} width="120%" height="200px" />
-                        </Col>
-                        <Col xs={6}>
-                            <Row>
-                                <Col>
-                                    <div className="card_right">
-                                        {model_real}
-                                    </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col>
-                                    <div className="card_down">
-                                        {model_price} Baht
-                                    </div>
-                                </Col>
-                            </Row>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+            </Col>
         </>
     );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Car_Card from "./Car_Card";
 import car_data from "../taladrod-cars.json"
+import { Container, Row } from "react-bootstrap";
 
 function BrandOfModel(props) {
 
@@ -10,13 +11,17 @@ function BrandOfModel(props) {
 
     return (
         <>
-            {
-                filterData.map((data)=>{
-                    return(
-                        <Car_Card dataset={data} state={0}/>
-                    )
-                })
-            }
+            <Container>
+                <Row>
+                    {
+                        filterData.map((data)=>{
+                            return(
+                                <Car_Card dataset={data} state={0}/>
+                            )
+                        })
+                    }
+                </Row>
+            </Container>
         </>
     );
 }

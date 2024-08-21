@@ -19,8 +19,8 @@ function HoverBox(props) {
         <div 
             className="box" 
             onMouseEnter={handleMouseEnter} 
-            onMouseLeave={handleMouseLeave}
-        >
+            onMouseLeave={handleMouseLeave}>
+            
             <div className={`${isred ? 'text' : 'text_red'} ${hovered ? 'fade-in' : 'fade-out'}`}>
                 {context}
             </div>

@@ -1,80 +1,63 @@
 import React, { useState } from "react";
-
-//makeing grid
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
-//chart
-import Pie_Chart from "./Pie_Chart"
-import Stack_Chart from "./Stack_Chart"
-
-//hover box
+import Pie_Chart from "./Pie_Chart";
+import Stack_Chart from "./Stack_Chart";
 import HoverBox from "./Hover_Box";
-
-//list car content
-import List_car_content from "./List_car_content"
-
+import List_car_content from "./List_car_content";
 import Brand_of_model from './brand_of_model';
-
-import "./App.css"
-
 import Sidebar from "./Sidebar";
-
-
-
-
+import "./App.css";
 
 const Dashboard = () => {
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></link>
+    const [selectedCar, setSelectedCar] = useState(null);
 
-    const [selectedCar, setSelectedCar] = useState(null)
-
-    const receiveSelectedCar = (e) =>{
-        console.log("this is from dashboard, selected car is : " , e)
-        setSelectedCar(e)
-    }
+    const receiveSelectedCar = (e) => {
+        console.log("Selected car from dashboard: ", e);
+        setSelectedCar(e);
+    };
     
     return (
-        <>
         <Container fluid>
             <Row>
-                <Col>
+                <Col xs={3}>
                     <Sidebar />
                 </Col>
-                <Col>
-                    <div style={{ position: 'absolute', top: '0', left: '200px', right: '0', padding: '20px', backgroundColor: 'white'}}>
-                        <div style={{width:"80%", margin:"0 auto"}}>
+                <Col xs={9}>
+                    <div style={{ position: 'absolute', top: '0', left: '300px', right: '0', padding: '20px', backgroundColor: 'white',width:"80%"}}>
+                        <div style={{margin:"0 auto"}}>
                             <Row className="justify-content-md-center">
-                                <Col md="auto">
+                                <Col>
                                     <h2 className="intro">Dashboard</h2>
                                 </Col>
                             </Row>
                             <Row>
-                                <Col xs={6}>
+                                <Col xs md={6}>
                                     <Pie_Chart />
                                 </Col>
-                                <Col xs={6}>
+                                <Col xs md={6}>
                                     <HoverBox context={"Portion of Cars by brand 🏎"} isred={true}/>
                                 </Col>
                             </Row>
                             <hr />
                             <Row>
-                                <Col xs={6}>
+                                <Col xs={6} md={6}>
                                     <HoverBox context={"Model Of Brand💸"} isred={false}/>
                                 </Col>
-                                <Col xs={6}>
-                                    <Stack_Chart />
+                                <Col xs={6} md={6}>
+                                    <div style={{width:'700px'}}>
+                                        <Stack_Chart />
+                                    </div>
                                 </Col>
                             </Row>
                             <Row className="justify-content-md-center">
                                 <Col xs={12}>
-                                    <h1 className='styled-header'>List Or Car's Brand</h1>
-                                    <i class="bi bi-list-nested"></i>
+                                    <h1 className='styled-header'>List Of Car's Brand</h1>
+                                    <i className="bi bi-list-nested"></i>
                                 </Col>
                             </Row>
                             <Row className="justify-content-md-center">
-                                {/* content of list of car */}
                                 <Col xs={12}>
                                     <List_car_content action={receiveSelectedCar}/>
                                 </Col>
@@ -82,11 +65,10 @@ const Dashboard = () => {
                             <Row className="justify-content-md-center">
                                 <Col xs={12}>
                                     <h1 className='styled-header'>Model Of Brand</h1>
-                                    <i class="bi bi-list-nested"></i>
+                                    <i className="bi bi-list-nested"></i>
                                 </Col>
                             </Row>
                             <Row className="justify-content-md-center">
-                                {/* content of list of car */}
                                 <Col xs={12}>
                                     <Brand_of_model selected={selectedCar}/>
                                 </Col>
@@ -96,7 +78,6 @@ const Dashboard = () => {
                 </Col>
             </Row>
         </Container>
-        </>
     );
 };
 

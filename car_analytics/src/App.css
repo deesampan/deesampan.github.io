@@ -73,19 +73,19 @@
   content: '';
   position: absolute;
   top: 50%;
-  width: 300px; /* Adjust the width of the lines here */
+  width: 20%; /* Adjust the width of the lines here */
   height: 2px;
   background-color: #333;
 }
 
 .styled-header::before {
   left: 0;
-  margin-left: 140px; /* Adjust the position of the line */
+  margin-left: 1%; /* Adjust the position of the line */
 }
 
 .styled-header::after {
   right: 0;
-  margin-right: 140px /* Adjust the position of the line */
+  margin-right: 1% /* Adjust the position of the line */
 }
 
 
