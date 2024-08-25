@@ -1,7 +1,8 @@
 
 
 # 🧾Car Analytics Project🏎
-![Uploading web_gif.gif…]()
+![web_gif](https://github.com/user-attachments/assets/a7272477-8156-4a79-ab63-7e7d76c225ff)
+
 
 ## Features
 
