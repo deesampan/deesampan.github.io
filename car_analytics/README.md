@@ -39,4 +39,4 @@ Wait for a while, Then
 npm run dev
 ```
 
-Follow its link, so now you are good to go
+Deesampan V. 6510766
